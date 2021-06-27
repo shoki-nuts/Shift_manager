@@ -1,2 +1,19 @@
-<h1>Shifts#new</h1>
-<p>Find me in app/views/shifts/new.html.erb</p>
+<h1>マイシフト</h1>
+
+<%= form_with model: @shift, local: true do |f| %>
+    <div>
+        <%= f.label :日にち%>
+        <%= f.date_select :date%>
+    </div>
+    <div>
+        <%= f.label :出勤時刻%>
+        <%= f.time_select :start_at%>
+    </div>
+    <div>
+        <%= f.label :退勤時刻%>
+        <%= f.time_select :end_at%>
+    </div>
+    <div>
+        <%= f.submit%>
+    </div>
+<% end %>
