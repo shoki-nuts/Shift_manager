@@ -1,0 +1,14 @@
+<h1>
+    <%= current_user.username%>
+</h1>
+<%=link_to "希望提出", new_shift_path %>
+
+<%= month_calendar  events: @shifts do |date, shifts| %>
+    <%= date.day %>
+
+    <% shifts.each do |shift| %>
+        <div>
+            <%= shift.start_time %>
+        </div>
+    <% end %>
+<% end %>

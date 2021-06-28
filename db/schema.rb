@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_27_004554) do
+ActiveRecord::Schema.define(version: 2021_06_28_010603) do
 
   create_table "shifts", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.date "date", null: false
+    t.date "start_time", null: false
     t.time "start_at", null: false
     t.time "end_at", null: false
     t.datetime "created_at", precision: 6, null: false

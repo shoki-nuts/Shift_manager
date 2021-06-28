@@ -1,9 +1,9 @@
-<h1>マイシフト</h1>
+<h1>シフト希望提出</h1>
 
 <%= form_with model: @shift, local: true do |f| %>
     <div>
         <%= f.label :日にち%>
-        <%= f.date_select :date%>
+        <%= f.date_select :start_time%>
     </div>
     <div>
         <%= f.label :出勤時刻%>
@@ -14,6 +14,6 @@
         <%= f.time_select :end_at%>
     </div>
     <div>
-        <%= f.submit%>
+        <%= f.submit "送信"%>
     </div>
 <% end %>
