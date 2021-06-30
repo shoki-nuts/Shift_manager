@@ -1,19 +1,6 @@
-<h1>シフト希望提出</h1>
+<h2>シフト希望提出</h2>
 
-<%= form_with model: @shift, local: true do |f| %>
-    <div>
-        <%= f.label :日にち%>
-        <%= f.date_select :start_time%>
-    </div>
-    <div>
-        <%= f.label :出勤時刻%>
-        <%= f.time_select :start_at%>
-    </div>
-    <div>
-        <%= f.label :退勤時刻%>
-        <%= f.time_select :end_at%>
-    </div>
-    <div>
-        <%= f.submit "送信"%>
-    </div>
-<% end %>
+<%=render 'form'%>
+
+<%= link_to "戻る", shifts_path%>
+

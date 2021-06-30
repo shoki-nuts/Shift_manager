@@ -1,0 +1,6 @@
+<h2>シフト希望編集</h2>
+
+<%=render 'form'%>
+
+<%= link_to "戻る", shifts_path%>
+<%= link_to '削除', @shift, method: :delete, data: { confirm: '本当に削除しますか?' } %>
