@@ -12,14 +12,14 @@
 
   <body>
     <h1>
-      <%= link_to "ShiftManager", shifts_path%>
+      <%= link_to "ShiftManager", root_path%>
     </h1>
     
     <% if user_signed_in? %>
       <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
     <% else %>
-      <%= link_to '新規登録', registration_select_home_path %>
-      <%= link_to 'ログイン', session_select_home_path %>
+      <%= link_to '新規登録', registration_select_path %>
+      <%= link_to 'ログイン', session_select_path %>
     <% end %>
     
 

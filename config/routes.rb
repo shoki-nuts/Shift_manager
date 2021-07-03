@@ -16,6 +16,6 @@ Rails.application.routes.draw do
   }
 
   root 'home#top'
-  get 'regestration_session' ,to: 'home#registration_select'
+  get 'registration_select' ,to: 'home#registration_select'
   get 'session_select' ,to: 'home#session_select'
 end
