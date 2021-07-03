@@ -1,15 +1,23 @@
 <h2>
-    <%= current_user.email%>
+    <%= current_user.nickname%>さん
 </h2>
-<%=link_to "希望提出", new_shift_path %>
+<aside>
+    <ul>
+        <li><%=link_to "希望提出", new_shift_path %></li>
+        <li><%=link_to "グループを探す", shifts_admins_index_path %></li>
+        <li>給料</li>
+    </ul>
+</aside>
 
-<%= month_calendar  events: @shifts do |date, shifts| %>
-    <%= date.day %>
+<main>
+    <%= month_calendar  events: @shifts do |date, shifts| %>
+        <%= date.day %>
 
-    <% shifts.each do |shift| %>
-        <div>
-            <%= link_to shift.start_at.strftime('%H:%M'), edit_shift_path(shift.id) %>
-            <%= link_to shift.end_at.strftime('%H:%M'), edit_shift_path(shift.id) %>
-        </div>
+        <% shifts.each do |shift| %>
+            <div>
+                <%= link_to shift.start_at.strftime('%H:%M'), edit_shift_path(shift.id) %>
+                <%= link_to shift.end_at.strftime('%H:%M'), edit_shift_path(shift.id) %>
+            </div>
+        <% end %>
     <% end %>
-<% end %>
+</main>

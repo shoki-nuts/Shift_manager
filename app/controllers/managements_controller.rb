@@ -1,6 +1,13 @@
 class ManagementsController < ApplicationController
-  before_action :authenticate_admin!
+  def top
+  end
 
-  def index
+  def users_index
+  end
+
+  def shifts_index
+  end
+
+  def setting
   end
 end

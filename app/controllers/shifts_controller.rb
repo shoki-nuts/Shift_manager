@@ -30,6 +30,10 @@ class ShiftsController < ApplicationController
     @shift.destroy
     redirect_to shifts_path
   end
+
+  def admins_index
+    @admins = Admin.all
+  end
   private
 
   def set_shift
