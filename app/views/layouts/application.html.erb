@@ -8,28 +8,46 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <h1>
-      <% if user_signed_in? %>
-        <%= link_to "ShiftManager", shifts_path%>
-      <% else %>
-        <%= link_to "ShiftManager", root_path%>
-      <% end %>
-    </h1>
-    
-    <% if user_signed_in? %>
-      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to '新規登録', new_user_session_path %>
-      <%= link_to 'ログイン', new_user_registration_path %>
-    <% end %>
-    
+    <header>
+      <div class="row">
+
+        <div class="col-sm-4">
+          <h1>
+            <% if user_signed_in? %>
+              <%= link_to "ShiftManager", shifts_path%>
+            <% else %>
+              <%= link_to "ShiftManager", root_path%>
+            <% end %>
+          </h1>
+        </div>
+        
+        <nav class="col-sm-6">
+          <ul class="row">
+            <% if user_signed_in? %>
+              <li class="col-sm"><%=link_to "希望提出", new_shift_path %></li>
+              <li class="col-sm"><%=link_to "グループを探す",  shifts_path%></li>
+              <li class="col-sm">アカウント</li>
+              <li class="col-sm"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+            <% else %> 
+              <li class="col-sm"><%= link_to '新規登録', new_user_session_path %></li>
+              <li class="col-sm"><%= link_to 'ログイン', new_user_registration_path %></li>
+            <% end %>
+          </ul>
+        </nav>
+        
+      </div>
+    </header>
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

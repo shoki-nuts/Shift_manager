@@ -1,11 +1,9 @@
 <h2>
     <%= current_user.nickname%>さん
 </h2>
+
 <aside>
     <ul>
-        <li><%=link_to "希望提出", new_shift_path %></li>
-        <li><%=link_to "グループを探す",  shifts_path%></li>
-        <li>給料</li>
     </ul>
 </aside>
 
@@ -15,8 +13,8 @@
 
         <% shifts.each do |shift| %>
             <div>
-                <%= link_to shift.start_at.strftime('%H:%M'), edit_shift_path(shift.id) %>
-                <%= link_to shift.end_at.strftime('%H:%M'), edit_shift_path(shift.id) %>
+                <%= link_to shift.punch_in.strftime('%H:%M'), edit_shift_path(shift.id) %>
+                <%= link_to shift.punch_out.strftime('%H:%M'), edit_shift_path(shift.id) %>
             </div>
         <% end %>
     <% end %>

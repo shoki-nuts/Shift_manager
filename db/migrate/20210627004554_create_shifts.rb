@@ -3,8 +3,8 @@ class CreateShifts < ActiveRecord::Migration[6.1]
     create_table :shifts do |t|
       t.references :user, null: false, foreign_key: true
       t.date :start_time, null: false
-      t.time :start_at, null: false
-      t.time :end_at, null: false
+      t.time :punch_in, null: false
+      t.time :punch_out, null: false
 
       t.timestamps
     end

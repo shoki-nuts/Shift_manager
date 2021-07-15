@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(version: 2021_07_03_032343) do
   create_table "shifts", force: :cascade do |t|
     t.integer "user_id", null: false
     t.date "start_time", null: false
-    t.time "start_at", null: false
-    t.time "end_at", null: false
+    t.time "punch_in", null: false
+    t.time "punch_out", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_shifts_on_user_id"

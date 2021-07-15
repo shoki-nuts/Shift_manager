@@ -31,9 +31,6 @@ class ShiftsController < ApplicationController
     redirect_to shifts_path
   end
 
-  def admins_index
-    @admins = Admin.all
-  end
   private
 
   def set_shift
@@ -41,6 +38,6 @@ class ShiftsController < ApplicationController
   end
 
   def shift_parameter
-    params.require(:shift).permit(:user, :start_time, :start_at, :end_at)
+    params.require(:shift).permit(:user, :start_time, :punch_in, :punch_out)
   end
 end
