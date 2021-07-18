@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
-
   root 'home#top'
 
-  get 'managements' , to: 'managements#top'
-  get 'managements/users_index' , to: 'managements#users_index'
-  get 'managements/shifts_index' , to: 'managements#shifts_index'
-  get 'managements/setting' , to: 'managements#setting'
+  get 'admins/admin_setting', to: 'admins#admin_setting'
+  get 'admins/members', to: 'admins#member_index'
+  get 'admins/member_setting', to: 'admins#member_setting'
 
   resources :shifts, except: [:show]
   

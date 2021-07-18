@@ -28,14 +28,21 @@
         
         <nav class="col-sm-6">
           <ul class="row">
-            <% if user_signed_in? %>
-              <li class="col-sm"><%=link_to "希望提出", new_shift_path %></li>
-              <li class="col-sm"><%=link_to "グループを探す",  serches_path%></li>
-              <li class="col-sm">アカウント</li>
+            <% if user_signed_in? &&  %>
+              <% if current_user.admin_user %>
+                <li class="col-sm"><%=link_to "シフト管理", shifts_path %></li>
+                <li class="col-sm"><%=link_to "メンバー",  admins_members_path%></li>
+                <li class="col-sm"><%=link_to "メンバー管理",  admins_member_setting_path%></li>
+                <li class="col-sm"><%=link_to "アカウント",  shifts_path%></li>
+              <% else %>
+                <li class="col-sm"><%=link_to "シフト希望", new_shift_path %></li>
+                <li class="col-sm"><%=link_to "グループを探す",  serches_path%></li>
+                <li class="col-sm"><%=link_to "アカウント",  shifts_path%></li>
+              <% end %>
               <li class="col-sm"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
             <% else %> 
-              <li class="col-sm"><%= link_to '新規登録', new_user_session_path %></li>
-              <li class="col-sm"><%= link_to 'ログイン', new_user_registration_path %></li>
+              <li class="col-sm"><%= link_to 'ログイン', new_user_session_path %></li>
+              <li class="col-sm"><%= link_to '新規登録', new_user_registration_path %></li>
             <% end %>
           </ul>
         </nav>

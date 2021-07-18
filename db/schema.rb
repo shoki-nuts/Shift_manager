@@ -28,11 +28,11 @@ ActiveRecord::Schema.define(version: 2021_07_15_070356) do
 
   create_table "relationships", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "follow_id", null: false
+    t.integer "admin_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["follow_id"], name: "index_relationships_on_follow_id"
-    t.index ["user_id", "follow_id"], name: "index_relationships_on_user_id_and_follow_id", unique: true
+    t.index ["admin_id"], name: "index_relationships_on_admin_id"
+    t.index ["user_id", "admin_id"], name: "index_relationships_on_user_id_and_admin_id", unique: true
     t.index ["user_id"], name: "index_relationships_on_user_id"
   end
 
@@ -62,6 +62,6 @@ ActiveRecord::Schema.define(version: 2021_07_15_070356) do
   end
 
   add_foreign_key "relationships", "users"
-  add_foreign_key "relationships", "users", column: "follow_id"
+  add_foreign_key "relationships", "users", column: "admin_id"
   add_foreign_key "shifts", "users"
 end
