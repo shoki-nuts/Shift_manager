@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   get 'managements/setting' , to: 'managements#setting'
 
   resources :shifts, except: [:show]
+  
+  resources :relationships, only: [:create, :destroy]
+  resources :serches, only: [:index]
 
   devise_for :users, controllers: {
     sessions:      'users/sessions',

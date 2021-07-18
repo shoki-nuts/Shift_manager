@@ -30,7 +30,7 @@
           <ul class="row">
             <% if user_signed_in? %>
               <li class="col-sm"><%=link_to "希望提出", new_shift_path %></li>
-              <li class="col-sm"><%=link_to "グループを探す",  shifts_path%></li>
+              <li class="col-sm"><%=link_to "グループを探す",  serches_path%></li>
               <li class="col-sm">アカウント</li>
               <li class="col-sm"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
             <% else %> 
