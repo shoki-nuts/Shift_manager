@@ -3,13 +3,18 @@ class ShiftsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @shifts = current_user.shifts.all
+    if current_user.admin_user
+      @shifts = Shift.where(admin_id: current_user.id)
+    else
+      @shifts = current_user.shifts.all
+    end
   end
 
   def show
   end
 
   def new
+    @admins = current_user.followings.all
     @shift = current_user.shifts.new
   end
 
@@ -38,6 +43,6 @@ class ShiftsController < ApplicationController
   end
 
   def shift_parameter
-    params.require(:shift).permit(:user, :start_time, :punch_in, :punch_out)
+    params.require(:shift).permit(:user, :start_time, :punch_in, :punch_out ,:admin_id)
   end
 end

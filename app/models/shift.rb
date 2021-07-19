@@ -1,5 +1,6 @@
 class Shift < ApplicationRecord
   belongs_to :user
+  belongs_to :admin, class_name: 'User'
 
   validate :date_before_start
   validate :punch_out_after_start

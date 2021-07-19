@@ -1,6 +1,9 @@
 <%= form_with model: @shift, local: true do |f| %>
     <div class="form-group">
         <div>
+            <%= f.label :グループ名%>
+            <%=f.collection_select :admin_id, @admins, :id, :user_name, {prompt: "店舗をして下さい"}, {class: ""} %>
+        <div>
             <%= f.label :日にち%>
             <%= f.date_select :start_time.to_s%>
         </div>
