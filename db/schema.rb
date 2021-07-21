@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_15_070356) do
+ActiveRecord::Schema.define(version: 2021_07_20_221140) do
+
+  create_table "posts", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "post_name"
+    t.string "post_address"
+    t.integer "deadline_wday"
+    t.integer "before_deadline"
+    t.integer "shift_cycle"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
 
   create_table "relationships", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -49,6 +61,7 @@ ActiveRecord::Schema.define(version: 2021_07_15_070356) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "posts", "users"
   add_foreign_key "relationships", "users"
   add_foreign_key "relationships", "users", column: "admin_id"
   add_foreign_key "shifts", "users"

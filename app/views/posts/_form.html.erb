@@ -1,0 +1,21 @@
+<%= form_with model: @post, local: true do |f| %>
+    <div class="form-group">
+        <div>
+            <%= f.label :職場%>
+            <%= f.text_field :post_name%>
+        </div>
+        <div>
+            <%= f.label :住所%>
+            <%= f.text_field :post_adress%>
+        </div>
+        <div>
+            <%= f.label :シフト期限%>
+            <%= f.select :shift_cycle, [["１週間分",7], ["２週間分",14], ["３週間分",21], ["４週間分",28]], { prompt: "周期を選択" } %><p>を</p>
+            <%= f.select :before_deadline, [["１週間前",0], ["２週間前",7], ["３週間前",14], ["４週間前",21]], { prompt: "周期を選択" } %><p>の</p>
+            <%= f.select :deadline_wday, [["月",0], ["火",1], ["水",2], ["木",3], ["金",4], ["土",5], ["日",6]], { prompt: "曜日を選択" } %><p>曜日まで</p>
+        <div>
+            <%= f.submit "送信"%>
+        </div>
+    </div>
+    
+<% end %>

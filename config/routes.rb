@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get 'admins/members', to: 'admins#member_index'
   get 'admins/member_setting', to: 'admins#member_setting'
 
+  resources :posts
+
   resources :shifts, except: [:show]
   
   resources :relationships, only: [:create, :destroy]

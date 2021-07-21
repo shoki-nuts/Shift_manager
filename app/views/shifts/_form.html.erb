@@ -3,6 +3,7 @@
         <div>
             <%= f.label :グループ名%>
             <%=f.collection_select :admin_id, @admins, :id, :user_name, {prompt: "店舗をして下さい"}, {class: ""} %>
+        </div>
         <div>
             <%= f.label :日にち%>
             <%= f.date_select :start_time.to_s%>
@@ -16,7 +17,7 @@
             <%= f.time_select :punch_out%>
         </div>
         <div>
-            <%= f.submit "送信"%>
+            <%= f.submit "送信", class:"btn-outline-dark"%>
         </div>
     </div>
     
