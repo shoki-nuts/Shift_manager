@@ -3,7 +3,8 @@ class AdminsController < ApplicationController
   end
 
   def member_index
-    @members = current_user.followers.all
+    @posts = current_user.posts.all
+
   end
 
   def member_setting

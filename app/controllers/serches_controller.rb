@@ -1,6 +1,6 @@
 class SerchesController < ApplicationController
     def index
-        @users = User.all
+        @posts = Post.all
     end
     
 

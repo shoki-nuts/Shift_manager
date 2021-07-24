@@ -10,7 +10,7 @@
         <% shifts.each do |shift| %>
             <div>
                 <%= link_to edit_shift_path(shift.id) do%> 
-                    <%= shift.admin.user_name %>
+                    <%= shift.post.post_name %>
                     <%= shift.punch_in.strftime('%H:%M') %>
                     <%= shift.punch_out.strftime('%H:%M') %>
                 <% end %>

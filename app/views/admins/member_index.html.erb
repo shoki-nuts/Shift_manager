@@ -1,4 +1,8 @@
-<% @members.each do |member| %>
-    <%=member.user_name%>
-    <%= link_to "設定", admins_member_setting_path(member)%>
+<% @posts.each do |post| %>
+    <li><%=post.post_name%></li>
+
+    <% members = post.members.all %>
+
+    
+
 <% end %>

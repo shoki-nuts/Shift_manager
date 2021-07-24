@@ -1,32 +1,16 @@
 class RelationshipsController < ApplicationController
-    before_action :set_user
-        
+
     def create
-        following = current_user.follow(@user)
-        if following.save
-            flash[:success] = 'ユーザーをフォローしました'
-            redirect_to serches_path
-        else
-            flash.now[:alert] = 'ユーザーのフォローに失敗しました'
-            redirect_to serches_path
-        end
+        post = Post.find(params[:post_id])
+        @relationship = post.relationships.create(member_id: current_user.id)
+        redirect_back(fallback_location: root_path)
     end
-
+    
     def destroy
-        following = current_user.unfollow(@user)
-        if following.destroy
-            flash[:success] = 'ユーザーのフォローを解除しました'
-            redirect_to serches_path
-        else
-            flash.now[:alert] = 'ユーザーのフォロー解除に失敗しました'
-            redirect_to serches_path
-        end
-    end
-
-    private
-
-    def set_user
-        @user = User.find(params[:admin_id])
+        post = Post.find(params[:post_id])
+        @relationship = post.relationships.find_by(member_id: current_user.id)
+        @relationship.destroy
+        redirect_back(fallback_location: root_path)
     end
 
 end

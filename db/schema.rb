@@ -25,24 +25,24 @@ ActiveRecord::Schema.define(version: 2021_07_20_221140) do
   end
 
   create_table "relationships", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "admin_id", null: false
+    t.integer "member_id", null: false
+    t.integer "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["admin_id"], name: "index_relationships_on_admin_id"
-    t.index ["user_id", "admin_id"], name: "index_relationships_on_user_id_and_admin_id", unique: true
-    t.index ["user_id"], name: "index_relationships_on_user_id"
+    t.index ["member_id", "post_id"], name: "index_relationships_on_member_id_and_post_id", unique: true
+    t.index ["member_id"], name: "index_relationships_on_member_id"
+    t.index ["post_id"], name: "index_relationships_on_post_id"
   end
 
   create_table "shifts", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "admin_id", null: false
+    t.integer "post_id", null: false
     t.date "start_time", null: false
     t.time "punch_in", null: false
     t.time "punch_out", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["admin_id"], name: "index_shifts_on_admin_id"
+    t.index ["post_id"], name: "index_shifts_on_post_id"
     t.index ["user_id"], name: "index_shifts_on_user_id"
   end
 
@@ -62,8 +62,8 @@ ActiveRecord::Schema.define(version: 2021_07_20_221140) do
   end
 
   add_foreign_key "posts", "users"
-  add_foreign_key "relationships", "users"
-  add_foreign_key "relationships", "users", column: "admin_id"
+  add_foreign_key "relationships", "posts"
+  add_foreign_key "relationships", "users", column: "member_id"
+  add_foreign_key "shifts", "posts"
   add_foreign_key "shifts", "users"
-  add_foreign_key "shifts", "users", column: "admin_id"
 end

@@ -5,11 +5,12 @@ Rails.application.routes.draw do
   get 'admins/members', to: 'admins#member_index'
   get 'admins/member_setting', to: 'admins#member_setting'
 
-  resources :posts
+  resources :posts do
+    resource :relationships, only: [:create, :destroy]
+  end
 
   resources :shifts, except: [:show]
   
-  resources :relationships, only: [:create, :destroy]
   resources :serches, only: [:index]
 
   devise_for :users, controllers: {

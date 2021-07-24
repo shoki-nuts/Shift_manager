@@ -2,7 +2,7 @@
     <div class="form-group">
         <div>
             <%= f.label :グループ名%>
-            <%=f.collection_select :admin_id, @admins, :id, :user_name, {prompt: "店舗をして下さい"}, {class: ""} %>
+            <%=f.collection_select :post_id, @posts, :id, :post_name, {prompt: "店舗をして下さい"}%>
         </div>
         <div>
             <%= f.label :日にち%>
